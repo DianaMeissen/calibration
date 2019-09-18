@@ -1,5 +1,5 @@
 import React from 'react';
-import './mainApp/App.css';
+import '../mainApp/App.css';
 
 import AnimationOfCalibration from '../animationOfCalibration/AnimationOfCalibration';
 import HelloBlock from '../helloBlock/HelloBlock';
