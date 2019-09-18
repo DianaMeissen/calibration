@@ -28,7 +28,7 @@ body {
 	border: 2px solid #131c98;
 	color: #131c98;
 	border-radius: 5px;
-	font-size: 24px;
+	font: 24px 'Helvetica Neue';
 	background-color: #fff;
 	position: absolute;
 	top: 50%;
