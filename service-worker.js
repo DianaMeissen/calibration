@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/DianaMeissen/calibration.git/precache-manifest.3c7d7673a8b42a7f1a26081113736c56.js"
+  "/DianaMeissen/calibration.git/precache-manifest.2bc47b4e7994eddc3d38e95f96575b4b.js"
 );
 
 self.addEventListener('message', (event) => {
