@@ -13,6 +13,7 @@
     position: absolute;
     height: var(--max-circle-size);
     width: var(--max-circle-size);
+    transition: all 0.5s ease-out;
 }
 
 .circle {

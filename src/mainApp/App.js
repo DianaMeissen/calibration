@@ -13,6 +13,7 @@ class App extends React.Component {
     showHelloBlock: false,
     circlePointsMatrix: [],
     randomizer: [],
+    isCalibrationStart: false,
   }
 
   showHelloBlockAndStartAnimation = () => {
@@ -25,7 +26,7 @@ class App extends React.Component {
     new Promise((res) => {
       setTimeout(() => {
         this.setState({ showHelloBlock: false });
-        this.changeCirclePosition()
+        this.changeCirclePositionWithRightDelay()
       }, 3000)
     })
   }
@@ -39,14 +40,26 @@ class App extends React.Component {
     })
   }
 
+  changeCirclePositionWithRightDelay() {
+    this.interval = setInterval(() => { this.changeCirclePosition() }, 3000);
+
+    // .then(() => {
+    //   setInterval(() => { this.setState({ isCalibrationStart: true }) }, 1000);
+    // })
+
+  }
+
   changeCirclePosition() {
     let matrix = [...this.state.circlePointsMatrix];
-
-    for (let i = 0; i < this.state.randomizer.length; i++) {
+    if (this.state.randomizer.length) {
       let coordinates = this.getRandomElementFromArray();
       let values = matrix[coordinates[0]][coordinates[1]].split(',');
       this.setState({ top: values[1], left: values[0] }, () => console.log(this.state));
     }
+  }
+
+  changeAnimationFlag(flag) {
+    this.setState({ isCalibrationStart: flag });
   }
 
   getRandomElementFromArray = () => {
