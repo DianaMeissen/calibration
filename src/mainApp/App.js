@@ -70,7 +70,7 @@ class App extends React.Component {
   }
 
   changeAnimationFlag = flag => {
-    this.setState({ isCalibrationStart: flag }, () => console.log(this.state.isCalibrationStart));
+    this.setState({ isCalibrationStart: flag });
   }
 
   getRandomElementFromArray = () => {
