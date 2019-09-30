@@ -42,12 +42,14 @@ class App extends React.Component {
 
   // method for getting dots X coordinates
   getXPosition() {
-    return Object.assign({}, this.state.left);
+    let x = Object.assign({}, this.state.left);
+    return x / 100;
   }
 
   // method for getting dots Y coordinates
-  getXYosition() {
-    return Object.assign({}, this.state.top);
+  getYPosition() {
+    let y = Object.assign({}, this.state.top);
+    return y / 100;
   }
 
   // returns true when calibration is started
