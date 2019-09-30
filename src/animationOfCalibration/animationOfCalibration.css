@@ -1,7 +1,7 @@
 :root {
     --min-circle-size: 25px;
     --max-circle-size: 50px;
-    --duration: 1s;
+    --duration: 2s;
 }
 
 .centered {

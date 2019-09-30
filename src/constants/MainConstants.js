@@ -1,2 +1,2 @@
-export const START_TOP = -10;
-export const START_LEFT = -10;
+export const START_TOP = 50;
+export const START_LEFT = 50;

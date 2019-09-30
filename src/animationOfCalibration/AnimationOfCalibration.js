@@ -3,7 +3,16 @@ import './animationOfCalibration.css';
 
 const AnimationOfCalibration = (props) => {
 
-    //сделать классом а в componentDidMount засетить интервал в 1 сек для изменения параметра isCalibrationStart
+    // componentDidMount() {
+    //     new Promise((res) => {
+    //         setTimeout(() => { this.props.startCalibration(true) }, 1000);
+    //     })
+    // }
+
+    // componentWillUnmount() {
+    //     this.props.startCalibration(false);
+    // }
+
     return (
         <div className="circles--animated centered" style={{ top: `${props.top}%`, left: `${props.left}%` }}>
             <div className="circle big centered"></div>

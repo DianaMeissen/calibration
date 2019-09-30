@@ -26,7 +26,7 @@ class App extends React.Component {
     new Promise((res) => {
       setTimeout(() => {
         this.setState({ showHelloBlock: false });
-        this.changeCirclePositionWithRightDelay()
+        this.interval = setInterval(() => { this.changeCirclePosition() }, 3000);
       }, 3000)
     })
   }
@@ -40,26 +40,37 @@ class App extends React.Component {
     })
   }
 
-  changeCirclePositionWithRightDelay() {
-    this.interval = setInterval(() => { this.changeCirclePosition() }, 3000);
+  // method for getting dots X coordinates
+  getXPosition() {
+    return Object.assign({}, this.state.left);
+  }
 
-    // .then(() => {
-    //   setInterval(() => { this.setState({ isCalibrationStart: true }) }, 1000);
-    // })
+  // method for getting dots Y coordinates
+  getXYosition() {
+    return Object.assign({}, this.state.top);
+  }
 
+  // returns true when calibration is started
+  isCalibrationStart() {
+    return Object.assign({}, this.state.isCalibrationStart);
   }
 
   changeCirclePosition() {
     let matrix = [...this.state.circlePointsMatrix];
+    new Promise((res) => { this.changeAnimationFlag(false) })
+
     if (this.state.randomizer.length) {
       let coordinates = this.getRandomElementFromArray();
       let values = matrix[coordinates[0]][coordinates[1]].split(',');
-      this.setState({ top: values[1], left: values[0] }, () => console.log(this.state));
+      this.setState({ top: values[1], left: values[0] });
+      new Promise((res) => {
+        setTimeout(() => { this.changeAnimationFlag(true) }, 1000);
+      })
     }
   }
 
-  changeAnimationFlag(flag) {
-    this.setState({ isCalibrationStart: flag });
+  changeAnimationFlag = flag => {
+    this.setState({ isCalibrationStart: flag }, () => console.log(this.state.isCalibrationStart));
   }
 
   getRandomElementFromArray = () => {
@@ -71,6 +82,7 @@ class App extends React.Component {
     return element.split(',');
   }
 
+  //Delete this method and call it from your service with passing matrix parameters
   componentDidMount() {
     this.createMatrix(5, 3);
   }
@@ -88,6 +100,7 @@ class App extends React.Component {
           (<div className="main-scene">
             {this.state.showHelloBlock && <HelloBlock />}
             <AnimationOfCalibration
+              startCalibration={this.changeAnimationFlag}
               top={this.state.top}
               left={this.state.left} />
           </div>)
